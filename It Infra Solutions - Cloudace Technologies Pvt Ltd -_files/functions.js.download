@@ -1,0 +1,67 @@
+// JavaScript Document
+$(document).ready(function(){ 
+        $(window).scroll(function(){
+            if ($(this).scrollTop() > 40) {
+          $('.header').addClass('fixme');
+            } else {
+          $('.header').removeClass('fixme');
+            }
+        }); 	
+	$('.scrollup').click(function(){
+		$("html, body").animate({ scrollTop: 0 }, 600);
+		return false;
+	});
+  
+new WOW().init();
+
+$('.micon').click(function(){
+    $(this).toggleClass('open');
+    $('ul.mmenu').slideToggle();
+  });
+$(".mmenu li a").each(function() {
+  if ($(this).next().length > 0) {
+   $(this).addClass("parent");
+  };
+ })
+ var menux = $('.mmenu li a.parent');
+ $( '<div class="more"><span>+</span></div>' ).insertBefore(menux);
+ $('.more').click(function(){
+   $(this).parent('li').toggleClass('open');
+ });
+/* locations */
+    $(".team_block").hide();
+  $(".team_block:first").show(); 
+
+  $("ul.team_tab li").click(function() {
+    $("ul.team_tab li").removeClass("active");
+    $(this).addClass("active");
+    $(".team_block").hide();
+    var activeTab = $(this).attr("rel"); 
+    $("#"+activeTab).fadeIn(); 
+  });
+  // for clients scroll
+$(function() {
+        
+        $('#alliance_list').carouFredSel({
+          responsive: true,
+          width: '100%',
+          prev: '#aprev',
+          next: '#anext',
+          scroll: {
+              items: 1,
+              duration: 2000,
+              timeoutDuration: 2500,
+              easing: 'swing',
+              /*pauseOnHover: 'immediate'*/
+              pauseOnHover: true   
+            },
+          items: {            
+          visible: {
+              min: 1,
+              max: 6,
+            }           
+          }     
+      });
+  });
+
+});
